@@ -10,8 +10,8 @@ def insertion_sort(numbers: List[int]) -> List[int]:
             j -=1
         numbers[j+1] = temp
     return numbers
-        
-print(insertion_sort([
-    394, 808, 4820, 38, 409, 30, 342
-]))
+if __name__ == "__main__":
+    print(insertion_sort([
+        394, 808, 4820, 38, 409, 30, 342
+    ]))
 
