@@ -1,5 +1,6 @@
 from typing import List
 
+
 def select_sort(numbers: List[int]) -> List[int]:
     len_numbers = len(numbers)
     for i in range((len_numbers)):
