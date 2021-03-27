@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Any
+from typing import Any, Optional
 
 class Node(object):
     def __init__(self, data: Any, next_node: Node = None):
@@ -64,6 +64,29 @@ class LinkedList(object):
             return _reverse_recursive(current_node, previous_node)
         self.head = _reverse_recursive(self.head, None)
         
+    def reverse_even(self) -> None:
+        def _reverse_even(head: Node, previous_node: Node) -> Optional[Node]:
+            if head is None:
+                return Node
+            
+            #2, 4, 6, 1, 2, 4, 6 => 6, 4, 2, 1, 6, 4, 2
+            current_node = head
+            while current_node and current_node.data % 2 == 0:
+                next_node = current_node.next
+                current_node.next = previous_node
+                
+                previous_node = current_node
+                current_node = next_node
+                
+            if current_node != head:
+                head.next = current_node
+                _reverse_even(current_node, Node)
+                return previous_node
+            else:
+                head.next = _reverse_even(head.next, head)
+                return head
+        self.head = _reverse_even(self.head, None)
+        
     def print(self) -> None:
         current_node = self.head
         while current_node:
@@ -76,11 +99,17 @@ class LinkedList(object):
 
 if __name__ == '__main__':
     l = LinkedList()
+
+    l.append(2)
+    l.append(4)
+    l.append(6)
     l.append(1)
     l.append(2)
-    l.append(3)
+    l.append(4)
+    l.append(6)
+    
     l.print()
-    l.reverse_recursive()
+    l.reverse_even()
     print('#')
     l.print()
     
