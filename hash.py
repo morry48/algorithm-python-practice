@@ -1,4 +1,5 @@
 import hashlib
+from typing import Any
 
 class HashTable(object):
     
@@ -26,12 +27,26 @@ class HashTable(object):
                 print(data, end=' ')
             
             print()
+            
+    def get(self, key) -> Any:
+        index = self.hash(key)
+        for data in self.table[index]:
+            if data[0] == key:
+                return data[1]
+            
+    def __setitem__(self, key, value) -> None:
+        self.add(key, value)
+        
+    def __getitem__(self, key) -> Any:
+        return self.get(key)
         
 if __name__ == '__main__':
     hash_table = HashTable()
-    hash_table.add('car', 'Tesra')
-    hash_table.add('car', 'TOYOTA')
-    hash_table.add('pc', 'Mac')
-    hash_table.add('sns', 'YouTube')
+    # hash_table.add('car', 'Tesra')
+    # hash_table.add('car', 'TOYOTA')
+    # hash_table.add('pc', 'Mac')
+    # hash_table.add('sns', 'YouTube')
+    hash_table['car'] = 'Tesra'
+    # print(hash_table.get('sns'))
     
-    hash_table.table.print
+    hash_table.print()
