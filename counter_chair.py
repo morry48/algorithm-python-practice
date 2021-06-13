@@ -24,14 +24,14 @@ def count_chars_v2(strings: str) -> Tuple[str, int]:
 
 def count_chars_v3(strings: str) -> Tuple[str, int]:
     strings = strings.lower()
-    d = {2}
+    d = Counter
     for char in strings:
         if not char.isspace():
-            d[char] = d.get(char, 0) + 1
+            d[char] += 1
     max_key = max(d, key=d.get)
     return max_key, d[max_key]
 
 
 if __name__ == '__main__':
     s = 'This is a pen. This is an apple Applepen.'
-    print(count_chars_v2(s))
+    print(count_chars_v3(s))
