@@ -13,7 +13,7 @@ def find_pair(pairs: List[Tuple[int, int]]) -> Iterator[Tuple[int, int]]:
             yield pair
 
 
-if __name__ == '__name__':
+if __name__ == '__main__':
     l = [(1, 2), (3, 5),(4, 7), (5, 3), (7, 4)]
     for r in find_pair(l):
         print(r)
