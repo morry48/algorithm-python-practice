@@ -24,7 +24,7 @@ def count_chars_v2(strings: str) -> Tuple[str, int]:
 
 def count_chars_v3(strings: str) -> Tuple[str, int]:
     strings = strings.lower()
-    d = Counter
+    d = Counter()
     for char in strings:
         if not char.isspace():
             d[char] += 1
